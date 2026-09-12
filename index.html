@@ -557,7 +557,9 @@
 
     /* --- 5.10 Back to top --- */
     .back-top{
-      position:fixed;right:clamp(20px,3vw,38px);bottom:clamp(20px,3vw,38px);z-index:900;
+      /* Sejajar horizontal dengan tombol WA (right:24px), lalu ditumpuk di
+         atasnya: 24px + tinggi wa-float 56px + jarak 14px = 94px. */
+      position:fixed;right:24px;bottom:94px;z-index:900;
       width:54px;height:54px;border-radius:50%;display:grid;place-items:center;
       border:1px solid var(--line-strong);background:rgba(12,78,135,.82);backdrop-filter:blur(12px);
       color:var(--text);opacity:0;visibility:hidden;transform:translateY(12px);
@@ -568,6 +570,9 @@
     .back-top svg{position:absolute;inset:-1px;width:calc(100% + 2px);height:calc(100% + 2px);transform:rotate(-90deg)}
     .back-top circle{fill:none;stroke:var(--gold);stroke-width:1.5;
       stroke-dasharray:var(--circ,163);stroke-dashoffset:var(--circ,163)}
+    /* Di layar kecil tombol ikut mengecil & tetap duduk di atas tombol WA:
+       14px + tinggi wa-float 48px + jarak 12px = 74px. */
+    @media (max-width:560px){.back-top{right:16px;bottom:74px;width:46px;height:46px}}
 
     /* =========================================================
        6. RESPONSIVE
@@ -664,8 +669,6 @@
       /* Beri ruang di bawah agar tombol WA tidak menutup konten terakhir */
       .footer-bottom{padding-bottom:76px}
 
-      /* Tombol "kembali ke atas" naik ke atas tombol WA agar tidak bertumpuk */
-      .back-top{right:14px;bottom:74px;width:46px;height:46px}
 
       /* Kartu driver & aplikasi: rapikan agar teks tidak pecah janggal.
          !important = pengaman kalau animasi JS meninggalkan geseran horizontal
